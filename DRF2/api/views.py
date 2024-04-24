@@ -9,7 +9,7 @@ from django.views.decorators.csrf import csrf_exempt
 @csrf_exempt  # to remove error dur to csrf token not present
 def stu_create(request):
     if request.method=='POST':
-        json_data=request.body  # json_data -json data pass byt app
+        json_data=request.body  # request.body -json data pass by app
         stream=io.BytesIO(json_data)
         # print(stream)
         python_data=JSONParser().parse(stream)   # convert json data to python data
