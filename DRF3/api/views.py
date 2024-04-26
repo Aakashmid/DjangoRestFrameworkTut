@@ -1,11 +1,14 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 from rest_framework.parsers import  JSONParser
+from django.views.decorators.csrf import csrf_exempt
 import io
 from .models import Student
 from .serializers import StudentSerializer
 import json
 # Create your views here.
+
+@csrf_exempt
 def StudentApi(request):
     if request.method=='GET':
         # json_data=request.body
@@ -25,3 +28,29 @@ def StudentApi(request):
             stu_objs=Student.objects.all()
             serialize=StudentSerializer(stu_objs,many=True)
             return JsonResponse(serialize.data,safe=False)
+        
+    # For create data
+    if request.method=="POST":
+        json_data=request.body
+        stream=io.BytesIO(json_data)
+        python_data=JSONParser().parse(stream)
+        serialize=StudentSerializer(data=python_data)
+        if serialize.is_valid():
+            serialize.save()
+            return JsonResponse({'success':"Data created successfuly!!"})  # return response in json format
+        else:
+            return JsonResponse(serialize.errors)
+
+    # for update
+    if request.method=='PUT':
+        json_data=request.body
+        stream=io.BytesIO(json_data)
+        python_data=JSONParser().parse(stream)
+        id=python_data.get('id')
+        stu=Student.objects.get(id=id)
+        serialize=StudentSerializer(stu,data=python_data,partial=True) # call update method of studentserializer
+        if serialize.is_valid():
+            serialize.save()
+            return JsonResponse({'success':"Data updated successfuly!!"})
+        else:
+            return JsonResponse(serialize.errors)
