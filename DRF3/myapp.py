@@ -20,13 +20,21 @@ def postdata():
     print(data)
 
 def updatedata():
-    data={'id':5,'name':'Steve Rogers','city':'Berlin'} # partial update
+    data={'id':5,'name':'Steve','city':'Berlin'} # partial update
     json_data=json.dumps(data)
     r=requests.put(url=URL,data=json_data)
-    data=r.json()   # response return by function
+    data=r.json()   # response return by api
     print(data)
 
 
+def deletedata():
+    data={'id':3}
+    json_data=json.dumps(data) # convert python data to json data
+    r=requests.delete(url=URL,data=json_data)
+    data=r.json()
+    print(data)
+
 # getdata()
 # postdata() # for creating data
-updatedata() #for updating
+# updatedata() #for updating
+deletedata()

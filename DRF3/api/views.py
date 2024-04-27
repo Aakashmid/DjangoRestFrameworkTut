@@ -48,9 +48,18 @@ def StudentApi(request):
         python_data=JSONParser().parse(stream)
         id=python_data.get('id')
         stu=Student.objects.get(id=id)
-        serialize=StudentSerializer(stu,data=python_data,partial=True) # call update method of studentserializer
+        serialize=StudentSerializer(stu,data=python_data,partial=True) # call update method of studentserializer , passed partial =True for partially update data
         if serialize.is_valid():
             serialize.save()
             return JsonResponse({'success':"Data updated successfuly!!"})
         else:
             return JsonResponse(serialize.errors)
+        
+    if request.method=='DELETE':
+        json_data=request.body
+        stream=io.BytesIO(json_data)
+        python_data=JSONParser().parse(stream)
+        id=python_data.get('id')
+        stu=Student.objects.get(id=id)
+        stu.delete()
+        return JsonResponse({'msg':"Data deleted successfully"})
