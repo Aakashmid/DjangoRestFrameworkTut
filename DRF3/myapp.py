@@ -20,7 +20,7 @@ def postdata():
     print(data)
 
 def updatedata():
-    data={'id':5,'name':'Steve','city':'Berlin'} # partial update
+    data={'id':5,'name':'Steve','roll_no':10,'city':'Berlin'} # partial update
     json_data=json.dumps(data)
     r=requests.put(url=URL,data=json_data)
     data=r.json()   # response return by api
@@ -28,7 +28,7 @@ def updatedata():
 
 
 def deletedata():
-    data={'id':3}
+    data={'id':6}
     json_data=json.dumps(data) # convert python data to json data
     r=requests.delete(url=URL,data=json_data)
     data=r.json()
