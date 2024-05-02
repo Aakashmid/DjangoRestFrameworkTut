@@ -13,14 +13,14 @@ def getdata(id=None):
     print(data)
 
 def postdata():
-    data={'name':'Steve','roll_no':12,'city':'New York'}
+    data={'name':'Steve','roll_no':2,'city':'New York'}
     json_data=json.dumps(data)
     r=requests.post(url=URL,data=json_data)
     data=r.json()   # response return by function
     print(data)
 
 def updatedata():
-    data={'id':1,'name':'Steve','roll_no':13} # partial update
+    data={'id':1,'name':'Steven','roll_no':2,'city':'Delhi'} # partial update
     json_data=json.dumps(data)
     r=requests.put(url=URL,data=json_data)
     data=r.json()   # response return by api
@@ -36,5 +36,6 @@ def deletedata():
 
 # getdata()
 # postdata() # for creating data
-# updatedata() #for updating
-deletedata()
+updatedata() #for updating
+# deletedata()
+
