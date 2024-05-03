@@ -13,7 +13,7 @@ def getdata(id=None):
     print(data)
 
 def postdata():
-    data={'name':'Steve','roll_no':2,'city':'New York'}
+    data={'name':'Ave','roll_no':20,'city':'New york'}
     json_data=json.dumps(data)
     r=requests.post(url=URL,data=json_data)
     data=r.json()   # response return by function
@@ -35,7 +35,7 @@ def deletedata():
     print(data)
 
 # getdata()
-# postdata() # for creating data
-updatedata() #for updating
+postdata() # for creating data
+# updatedata() #for updating
 # deletedata()
 
