@@ -4,7 +4,9 @@ from django.urls import path,include
 from api import views
 
 router= DefaultRouter()
-router.register('studentapi',views.StudentModelViewSet,basename='Student')
+# router.register('studentapi',views.StudentModelViewSet,basename='Student')
+router.register('studentapi',views.StudentModelViewSet2,basename='Student')
+# router.register('studentapi',views.StudentModelViewSet3,basename='Student')
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls)),
