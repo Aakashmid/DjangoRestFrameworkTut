@@ -1,0 +1,2 @@
+Json web Token is a fairly new standard which can be userd
+for tken-based authentication . Unlike the built-in TokenAuthentication scheme, JWT Authentication does not need  to use a database to validate a token
