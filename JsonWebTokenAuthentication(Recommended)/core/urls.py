@@ -15,5 +15,13 @@ urlpatterns = [
  ]
 
 # refresh token
-# eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcxNzM0MDExOCwiaWF0IjoxNzE3MjUzNzE4LCJqdGkiOiI2MTg5OWJlY2MxOWE0MDExOTMzZGI5ZTdkNTQ2ODE4NCIsInVzZXJfaWQiOjF9.ET4f-S1wAqOvJk266rGGoS2L6HJ50UIo8zuo0DoRW1Y
+#eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcxNzUxNDQwNiwiaWF0IjoxNzE3NDI4MDA2LCJqdGkiOiJkOGFhMWJiZTlhNDQ0ZjE0OWJiYzI0NWI4N2RjZDFkNyIsInVzZXJfaWQiOjF9.QJA-qD6CAnRTxoj23d23es9jw3FUbj-aWhw9xWA9RDw
+ 
 
+#  for gettoken "http POST http://127.0.0.1:8000/gettoken/ username="admin" password="admin""
+
+
+
+'''
+note -  when you launch your api you will  add documentation how to use it how gettoken , refreshtoken all information
+'''
