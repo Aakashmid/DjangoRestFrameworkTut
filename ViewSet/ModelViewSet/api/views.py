@@ -2,7 +2,6 @@ from rest_framework.viewsets import ModelViewSet,ReadOnlyModelViewSet
 from .serializers  import StudentSerializer
 from .models import Student
 
-
 # For all type of operations
 class StudentViewSet(ModelViewSet):
     queryset=Student.objects.all()
