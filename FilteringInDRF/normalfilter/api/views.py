@@ -26,5 +26,6 @@ class StudentListView(ListAPIView):
 class StudentListView2(ListAPIView):
     queryset=Student.objects.all()
     serializer_class=StudentSerializer
+    # for localy 
     filter_backends=[DjangoFilterBackend]
     filterset_fields=['city']
