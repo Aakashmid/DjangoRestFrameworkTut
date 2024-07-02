@@ -17,7 +17,7 @@ class Quizzes(models.Model):
         ordering=['id']
     
     title=models.CharField(_("Quiz Title"),default=_("New Quiz"), max_length=255) # first argument is verbose name 
-    category=models.ForeignKey(Category, default=1,on_delete=models.DO_NOTHING,default=1)  # there can be many quizzes of one category , default=1 means take first category 
+    category=models.ForeignKey(Category,on_delete=models.DO_NOTHING,default=1)  # there can be many quizzes of one category , default=1 means take first category 
     date_created=models.DateTimeField( auto_now_add=True)  # auto_now would be use when we have date_updated field
     def __str__(self) -> str:
         return self.title
@@ -29,8 +29,6 @@ class Updated(models.Model):
         abstract=True
 
 class Question(Updated):
-    quiz=models.ForeignKey(Quizzes,related_name='question',on_delete=models.DO_NOTHING)
-    
 
     class Meta:
         verbose_name=_("Question")
@@ -49,6 +47,14 @@ class Question(Updated):
         (0,_('Multiple Choice')),
     )
 
+    technique=models.IntegerField(_("Type of question "), choices=TYPE, default=0)  # type of question , like we take multiple choice for now 
+    title=models.CharField(_("Title"), max_length=250)
+    difficulty=models.IntegerField(_("Difficulty"), choices=SCALE, default=0)
+    date_created=models.DateTimeField(_("Date created"), auto_now_add=True)
+    is_active =models.BooleanField(_("Active status"),default=False)  # tell whether question is active or not (for quiz)
+    quiz=models.ForeignKey(Quizzes,related_name='question',on_delete=models.DO_NOTHING)
+
 class Answer(Updated):
     question=models.ForeignKey(Question,related_name='answer',on_delete=models.DO_NOTHING)
-    
+    answer_text=models.CharField(_("Answer Text"), max_length=250)
+    is_right=models.BooleanField(default=False)
