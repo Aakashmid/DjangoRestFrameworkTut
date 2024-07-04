@@ -2,3 +2,6 @@ venv/
 notes.txt
 __pycache__/
 notes.txt
+
+# migrations
+migrations/
