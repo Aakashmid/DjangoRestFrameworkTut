@@ -9,6 +9,7 @@ from Quiz import views
 # router.register
 
 urlpatterns = [
-    path('quiz/', views.Quiz.as_view(),name='Quiz'),
+    path('', views.Quiz.as_view(),name='Quiz'),
+    path('r/<str:topic>', views.RandomQuestion.as_view(),name='random'),
 ]
 
